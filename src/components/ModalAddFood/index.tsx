@@ -4,17 +4,18 @@ import { Form } from "./styles";
 import Modal from "../Modal";
 import Input from "../Input";
 import { useRef } from "react";
+import { FoodInfo } from "../Food";
 
 interface ModalAddFoodProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddFood: (data: []) => void;
+  handleAddFood: (food: FoodInfo) => Promise<void>;
 }
 
 const ModalAddFood = ({ isOpen, setIsOpen, handleAddFood }: ModalAddFoodProps) => {
   const formRef = useRef();
 
-  const handleSubmit = async (data: []) => {
+  const handleSubmit = async (data: FoodInfo) => {
     handleAddFood(data);
     setIsOpen();
   };
